@@ -1,5 +1,8 @@
 name: Build
 
+env:  
+  ACTIONS_STEP_DEBUG: true
+
 on:
   push:
   workflow_dispatch:  # 添加这一行即可开启手动触发
