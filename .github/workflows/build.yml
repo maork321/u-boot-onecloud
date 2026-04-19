@@ -45,7 +45,7 @@ jobs:
           # export PATH="$PATH:$(pwd)/gcc-linaro-arm-none-eabi-4.8-2014.04_linux/bin"
           make distclean
           make m8b_onecloud_config
-          make -j$(nproc) CROSS_COMPILE=arm-none-eabi-
+          make -j$(nproc) CROSS_COMPILE=arm-none-eabi- CFLAGS="-Wno-error -fno-lto -Wno-attribute-alias"
 
       - name: Download AmlImg
         run: |
