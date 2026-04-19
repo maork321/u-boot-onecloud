@@ -106,8 +106,9 @@ jobs:
           ./AmlImg pack build/eMMC.burn.img pack/
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
+          name: onecloud-build-output
           path: |
             build/*.bin
             build/resource.img
