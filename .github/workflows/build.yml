@@ -16,10 +16,16 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo "Starting dependency installation..."
-          whoami
+          set -x  # 开启命令追踪，这会把执行的每一行命令都打印在日志里
+          echo "检查系统状态..."
+          uname -a
+          sudo apt-get update || echo "apt update failed"
+          echo "开始安装依赖..."
+          # 将错误输出(stderr)也重定向到标准输出，确保失败信息能被记录
+          sudo apt install make imagemagick ttf-dejavu 2>&1
+          # sudo apt-get install -y make gcc-arm-none-eabi imagemagick 2>&1
+          echo "依赖安装步骤完成"
           sudo apt update
-          sudo apt install make imagemagick ttf-dejavu
 
       - name: Download toolchain
         run: |
